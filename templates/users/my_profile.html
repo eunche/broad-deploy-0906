@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- 홈페이지 타이틀 -->
+{% block title %}
+마이페이지
+{% endblock title %}
+
+
+<!-- 개별적인 css/link태그 추가 -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'users/css/my_profile.css' %}">
+{% endblock css %}
+
+
+{% block header %}
+<div class="header__wrapper">
+    <div class="header__leftbox">
+    </div>
+    <div class="header__midbox">
+        <span class="header__title">마이페이지</span>
+    </div>
+    <div class="header__rightbox">
+    </div>
+</div>
+{% endblock header %}
+
+
+{% block content %}
+<div class="profile__top">
+    <div class="myprofile">
+        <div style="background-image: url({{user.avatar.url}});" class="profile__image"></div>
+        <div class="profile__nickname">{{user.nickname}}</div>
+    </div>
+    <a class="profile__edit" href="{% url 'users:profile_update' %}"><span>프로필 수정</span></a>
+</div>
+<div class=line></div>
+<div class="profile__middle">
+    <a href="{% url 'bakeries:user_review_list' %}" class="profile__review"><img
+            src="{% static 'users/img/write.png' %}">작성한 리뷰</a>
+    <div class="profile__post">
+        <h1>게시판</h1>
+        <h2><a href="{% url 'posts:my' %}">내가 쓴 글</a></h2>
+        <h2><a href="#">댓글 단 글</a></h2>
+        <h2><a href="{% url 'posts:scrap' %}">찜한 게시글</a></h2>
+    </div>
+</div>
+<div class="profile__bottom">
+    <hr style="width:80%; height: 1px; border:none;border-top: 1px solid #cfcfcf;">
+    <div class="profile__logout"><a href="{% url 'users:logout' %}">로그아웃</a></div>
+</div>
+{% endblock content %}

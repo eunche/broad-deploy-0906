@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- 홈페이지 타이틀 -->
+{% block title %}
+빵집 지도
+{% endblock title %}
+
+
+<!-- 개별적인 css/link태그 추가 -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'map/css/map.css' %}">
+<link rel="stylesheet" href="{% static 'map/css/overlay.css' %}">
+<link rel="stylesheet" href="{% static 'bakeries/css/bakery_list.css' %}">
+<link rel="stylesheet" href="{% static 'bakeries/css/bakery_detail.css' %}">
+<link rel="stylesheet" href="{% static 'bakeries/css/bakery_review_list.css' %}">
+<link rel="stylesheet" href="{% static 'bakeries/css/bakery_review_list.css' %}">
+<style>
+    .list_store:hover {
+        cursor: pointer;
+    }
+
+    .bakery_review_write:hover {
+        cursor: pointer;
+    }
+</style>
+{% endblock css %}
+
+
+{% block head_script %}
+<!-- 기본 카카오맵 API -->
+<script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=08a8e8a0fde8d36ad5c30df67d5d41f6&libraries=clusterer"></script>
+<!-- 제이쿼리 -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+
+</style>
+{% endblock head_script %}
+
+
+{% block content %}
+<div class="map_init_box jsMapInit">
+    <div class="init_blank_top header_height"></div>
+    <map name="element_map_map">
+        <area onclick="startMap(event)" shape="poly" coords="164,194,205,181,202,138,174,130,152,149,166,193"
+            alt="서울" />
+        <area onclick="startMap(event)" shape="poly"
+            coords="159,177,157,144,148,105,186,71,241,116,233,137,260,160,256,205,209,239,193,232,161,240,143,202,169,194,201,181,212,152,193,138,165,138,158,163,161,195"
+            alt="경기" />
+        <area onclick="startMap(event)" shape="poly" coords="149,145,139,134,110,149,125,200,167,194" alt="인천" />
+        <area onclick="startMap(event)" shape="poly"
+            coords="265,160,248,104,196,63,293,59,319,21,420,210,395,221,339,219,301,202,277,200,264,215,255,210,265,194,265,163,261,158"
+            alt="강원" />
+        <area onclick="startMap(event)" shape="poly"
+            coords="210,261,200,232,165,239,129,218,82,259,120,282,136,356,161,354,177,335,212,348,222,357,245,346,235,339,201,339,189,305,188,262,209,260,209,260"
+            alt="충남" />
+        <area onclick="startMap(event)" shape="poly" coords="233,265,193,264,197,309,209,307,222,292,240,294,231,266"
+            alt="세종" />
+        <area onclick="startMap(event)" shape="poly" coords="203,314,209,336,246,336,250,294,222,293,202,313,200,310"
+            alt="대전" />
+
+        <area onclick="startMap(event)" shape="poly"
+            coords="320,251,328,241,342,216,284,194,207,235,214,258,236,262,251,291,249,346,263,350,278,343,285,326,269,312,269,270,311,243,318,250"
+            alt="충북" />
+        <area onclick="startMap(event)" shape="poly"
+            coords="272,350,256,352,246,344,231,356,214,355,156,352,131,358,145,374,153,378,147,384,134,388,123,409,137,409,115,431,136,438,164,422,186,427,198,437,218,440,229,435,239,442,252,436,250,407,256,382,270,371,273,351,267,351,268,351,268,352"
+            alt="전북" />
+        <area onclick="startMap(event)" shape="poly"
+            coords="241,447,258,486,265,538,237,557,195,553,193,531,203,517,187,527,171,555,171,574,169,593,152,580,124,601,123,549,99,571,83,588,70,575,101,532,57,522,78,461,106,452,115,433,135,442,167,425,184,432,202,445,228,441,239,447"
+            alt="전남/광주" />
+        <area onclick="startMap(event)" shape="poly" coords="314,401,318,355,370,349,372,396,347,403,312,399"
+            alt="대구" />
+        <area onclick="startMap(event)" shape="poly"
+            coords="309,355,308,397,268,368,281,326,273,270,331,250,345,228,417,209,442,342,435,386,381,387,373,344,313,346"
+            alt="경북" />
+        <area onclick="startMap(event)" shape="poly"
+            coords="270,374,293,378,302,402,357,406,382,405,382,431,355,454,361,513,339,518,297,502,284,519,253,484,239,438,254,437,248,402,254,380,261,376"
+            alt="경남" />
+        <area onclick="startMap(event)" shape="poly" coords="438,390,383,398,386,431,405,424,417,433,432,431,441,402"
+            alt="울산" />
+        <area onclick="startMap(event)" shape="poly" coords="436,452,401,473,376,470,365,439,391,424,435,448"
+            alt="부산" />
+        <area onclick="startMap(event)" shape="poly" coords="196,634,60,633,60,708,192,707,195,631" alt="제주" />
+
+    </map>
+    <img usemap="#element_map_map" class="map_init" src="{% static 'map/img/map_init.JPG' %}" alt="map image">
+    <div class="init_blank_bottom bottom_height"></div>
+</div>
+<div id="map"></div>
+<div class="region_select_box set_none jsRegionSelectBox">
+    <div class="region_back_box" onclick="clickRegionBack()">
+        <img src="{% static 'core/img/left_arrow.png' %}" alt="뒤로가기 이미지">
+    </div>
+    <select class="jsRegionSelect" onchange="changeRegion()" name="" id="">
+    </select>
+    <div class="region_right_box"></div>
+</div>
+<div onclick="clickGoToList()" class="go_to_list set_none">
+    <span>빵집 리스트로 이동하기</span>
+</div>
+{% endblock content %}
+
+
+{% block script %}
+<script src="{% static 'map/js/jquery.rwdImageMaps.min.js' %}"></script>
+<script>
+    $(document).ready(function (e) {
+        $('img[usemap]').rwdImageMaps();
+    });
+</script>
+<script>
+    const body = document.querySelector("body");
+    body.classList.add("set_fixed");
+
+</script>
+<script>
+    const getRegionDataUrl = "{% url 'map:get_region_api' %}";
+    const closeUrl = "{% static 'map/img/close.png' %}";
+    const getBakeryListDataUrl = "{% url 'map:get_bakery_list_api' %}";
+    const arrowSrc = "{% static 'core/img/left_arrow.png' %}";
+    const getBakeryDetailDataUrl = "{% url 'map:get_bakery_detail_api' %}";
+    const csrf = "{{ csrf_token }}";
+    const ajaxLikeUrl = "{% url 'bakeries:ajax_like' %}";
+    const heartSrc = "{% static 'bakeries/img/heart.png' %}";
+    const whiteHeartSrc = "{% static 'bakeries/img/white_heart.png' %}";
+    const tempLocalSrc = "{% static 'bakeries/img/location.png' %}";
+    const getBakeryDetailReviewsDataUrl = "{% url 'map:get_bakery_detail_reviews_api' %}";
+    const trashSrc = "{% static 'bakeries/img/trash.png' %}";
+    const deleteReviewUrl = "{% url 'map:ajax_delete_review' %}";
+
+</script>
+<script src="{% static 'bakeries/js/bakeryDetailMap.js' %}"></script>
+<script src="{% static 'map/js/regionData.js' %}"></script>
+<script src="{% static 'map/js/main_map.js' %}"></script>
+<script src="{% static 'bakeries/js/like.js' %}"></script>
+<script src="{% static 'map/js/goPinToBakeryDetail.js' %}"></script>
+<script src="{% static 'map/js/backDetailToMap.js' %}"></script>
+<script src="{% static 'map/js/clickGoToList.js' %}"></script>
+<script src="{% static 'map/js/backListToMap.js' %}"></script>
+<script src="{% static 'map/js/goToBakeryDetail.js' %}"></script>
+<script src="{% static 'map/js/backDetailToList.js' %}"></script>
+<script src="{% static 'map/js/goDetailToReviews.js' %}"></script>
+<script src="{% static 'map/js/deleteReview.js' %}"></script>
+<script src="{% static 'map/js/backReviewsToDetail.js' %}"></script>
+
+
+{% endblock script %}

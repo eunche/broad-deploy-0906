@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- 홈페이지 타이틀 -->
+{% block title %}
+프로필 수정
+{% endblock title %}
+
+
+<!-- 개별적인 css/link태그 추가 -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'users/css/profile_update.css' %}">
+{% endblock css %}
+
+
+{% block header %}
+<div class="header__wrapper">
+    <div class="header__leftbox">
+        <a href="{% url 'users:profile' %}"><img class="left_arrow" src="{% static 'core/img/left_arrow.png' %}"
+                alt="left_arrow icon"></a>
+    </div>
+    <div class="header__midbox">
+        <span class="header__title">내 정보 수정</span>
+    </div>
+    <div class="header__rightbox">
+    </div>
+</div>
+{% endblock header %}
+
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="profile_update__top">
+        <div style="background-image: url({{user.avatar.url}});" class="profile_update__image"></div>
+        <a href="{% url 'users:imageupdate' %}"><img class="profile_update__imageupdate"
+                src="https://www.vhv.rs/dpng/d/462-4623656_thumb-image-camera-icon-png-circle-transparent-png.png"></a>
+    </div>
+    <div class="profile_update_midbox">
+        <div class="profile_update_sectionbox">
+            <label for="user_email" class="profile_update_label">이메일<strong>(변경 불가)</strong></label>
+            <div class="profile_update_input">{{user.email}}</div>
+        </div>
+        <div class="profile_update_sectionbox">
+            <label for="user_nickname" class="profile_update_label">닉네임<strong>(선택)</strong></label>
+            {{form.nickname}}
+            {% if form.nickname.errors %}
+            {% for error in form.nickname.errors  %}
+            {{error}}
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% if user.is_social_login %}
+        {% else %}
+        <div class="profile_update_sectionbox">
+            <label for="user_password" class="profile_update_label">비밀번호</label>
+            {{form.password}}
+            {% if form.password.errors %}
+            {% for error in form.password.errors  %}
+            {{error}}
+            {% endfor %}
+            {% endif %}
+            {{form.confirm_password}}
+            {% if form.confirm_password.errors %}
+            {% for error in form.confirm_password.errors  %}
+            {{error}}
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% endif %}
+        <input class="signup_button" type="submit" value="확인">
+    </div>
+</form>
+{% endblock content %}
+
+{% block bottom_icons %}
+{% endblock bottom_icons %}

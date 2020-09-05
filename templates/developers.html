@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- 홈페이지 타이틀 -->
+{% block title %}
+개발자들
+{% endblock title %}
+
+<!-- 개별적인 css/link태그 추가 -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'core/css/developers.css' %}">
+{% endblock css %}
+
+{% block header %}
+<div class="header__wrapper">
+    <div class="header__leftbox">
+        <img onclick="history.go(-1);" class="left_arrow" src="{% static 'core/img/whiteback.png' %}"
+            alt="left_arrow icon">
+    </div>
+    <div class="header__midbox">
+    </div>
+    <div class="header__rightbox">
+        <!-- <img class="post_icon" src="{% static  'posts/img/menu.png' %}"> -->
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<h1>개발자들</h1>
+<ul>
+    <li>경상대학교 컴퓨터과학과 18학번 김은채</li>
+    <li>경상대학교 물리학과 19학번 이가현</li>
+    <li>경상대학교 화학과 19학번 윤지현</li>
+    <li>경상대학교 한문학과 17학번 성은수</li>
+</ul>
+{% endblock content %}
+
+{% block bottom_icons %}
+<div class="bottom_icons bottom_height">
+    <img src="{% static 'core/img/likelionlogo.png' %}" alt="likelion">
+</div>
+{% endblock bottom_icons %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+    .content {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100px;
+    }
+
+    .profile_image_submit {
+        background-color: #5d2c1d;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 8px 12px;
+        margin-right: 10px;
+    }
+</style>
+{% endblock css %}
+
+{% block title %}
+프로필 수정
+{% endblock title %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="avatar" accept="image/*" id="id_avatar">
+    <input class="profile_image_submit" type="submit" style="border-radius: 3px;" value="등록">
+</form>
+{% endblock content %}

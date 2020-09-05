@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- 홈페이지 타이틀 -->
+{% block title %}
+글수정
+{% endblock title %}
+
+
+<!-- 개별적인 css/link태그 추가 -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'posts/css/post_write.css' %}">
+{% endblock css %}
+
+
+{% block header %}
+<div class="header__wrapper">
+    <div class="header__leftbox">
+        <img onclick="history.go(-1);" class="left_arrow" src="{% static 'core/img/left_arrow.png' %}"
+            alt="left_arrow icon">
+    </div>
+    <div class="header__midbox">
+        <span class="header__title">글수정</span>
+    </div>
+    <div class="header__rightbox"></div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<form method="POST" class="post-form" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <div class="post_write_title">제목</div>
+    <div class="post_write_title_box">{{ form.title }}</div>
+    <div class="post_write_contents">내용</div>
+    <div class="post_write_contents_box">{{ form.body }}</div>
+    {{ form.user }}
+    <!-- 글쓰기 이미지추가&등록 박스 -->
+    <div class="post_write_submit_img_box"></div>
+    <div class="post_write_img_box">
+        <input type="file" name="photo" accept="image/*" id="id_photo">
+        <div class="post_update_left">
+            <input type="checkbox" name="photo-clear" id="photo-clear_id">
+            <label for="photo-clear_id" class="image_delete">사진 삭제</label>
+        </div>
+    </div>
+    <br>
+    <div class="post_update_submit_bigbox">
+        <input class="post_write_submit" type="submit" style="border-radius: 3px;" value="수정하기">
+    </div>
+
+</form>
+{% endblock content %}

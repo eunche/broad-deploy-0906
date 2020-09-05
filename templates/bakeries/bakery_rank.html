@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- 홈페이지 타이틀 -->
+{% block title %}
+랭킹
+{% endblock title %}
+
+
+<!-- 개별적인 css/link태그 추가 -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'bakeries/css/bakery_rank.css' %}">
+<!-- 제이쿼리 -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+{% endblock css %}
+
+
+{% block header %}
+<div class="header__wrapper">
+    <div class="header__leftbox">
+    </div>
+    <div class="header__midbox">
+        <span class="header__title">랭킹</span>
+    </div>
+    <div class="header__rightbox">
+    </div>
+</div>
+{% endblock header %}
+
+
+{% block content %}
+<div class="menu">
+    <div onclick="clickCategory(event)" class="menu_1">
+        <div style="background-image: url(/static/bakeries/img/tart.jpg);"
+            class="menu__img menu_1__photo jsTart opacity_1">
+        </div>
+        <div class="menu_1__name">타르트</div>
+    </div>
+
+    <div onclick="clickCategory(event)" class="menu_1">
+        <div style="background-image: url(/static/bakeries/img/rollcake.jpg);" class="menu__img menu_1__photo jsCake">
+        </div>
+        <div class="menu_1__name">케이크</div>
+    </div>
+
+    <div onclick="clickCategory(event)" class="menu_1">
+        <div style="background-image: url(/static/bakeries/img/makarong.jpg);"
+            class="menu__img menu_1__photo jsMakarong"></div>
+        <div class="menu_1__name">마카롱</div>
+    </div>
+
+    <div onclick="clickCategory(event)" class="menu_1">
+        <div style="background-image: url(/static/bakeries/img/croffle.jpg);" class="menu__img menu_1__photo jsCroffle">
+        </div>
+        <div class="menu_1__name">크로플</div>
+    </div>
+
+    <div onclick="clickCategory(event)" class="menu_1">
+        <div style="background-image: url(/static/bakeries/img/scon.jpg);" class="menu__img menu_1__photo jsScon">
+        </div>
+        <div class="menu_1__name">스콘</div>
+    </div>
+</div>
+<hr class="sort_hr">
+<div class="list jsList">
+</div>
+{% endblock content %}
+
+{% block script %}
+<script>
+    const awsURL = "{{ aws_url }}"
+</script>
+<script src="{% static 'bakeries/js/sort.js' %}"></script>
+{% endblock script %}

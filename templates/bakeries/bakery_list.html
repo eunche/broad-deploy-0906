@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- 홈페이지 타이틀 -->
+{% block title %}
+빵집 리스트
+{% endblock title %}
+
+
+<!-- 개별적인 css/link태그 추가 -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'bakeries/css/bakery_list.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+<div class="category">
+    <div class="category_area">경상남도</div>
+    <div class="category_sort">
+        <!-- <span class="sort_like">인기순</span>
+        <span class="sort_distance">거리순</span> -->
+    </div>
+</div>
+<div class="list">
+    {% for bakery in all_bakeries %}
+    <a href="{% url 'bakeries:detail' bakery.id %}" class="list_store">
+        <div class="store_rank">{{forloop.counter}} </div>
+        <div class="store_detail">
+            <div class="detail_top">
+                <span class="top_name">{{bakery.name}}</span>
+            </div>
+            <div class="detail_explain">{{bakery.short_sub_name}}</div>
+            <div class="detail_address">{{bakery.address}}</div>
+        </div>
+        <div class="store_review">
+            <div class="review_score">
+                <span class="score_star">★</span>
+                <span class="score_number"><span class="jsCount">{{bakery.total_rating}}</span></span>
+            </div>
+            <div class="review_number">
+                <span class="review_count">리뷰 {{bakery.review_count}}</span>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script>
+    const count = document.querySelectorAll(".jsCount")
+    for (const i of count) {
+        if (i.innerText == "0") {
+            i.innerHTML = `&nbsp;&nbsp;-`
+        }
+    }
+</script>
+{% endblock script %}

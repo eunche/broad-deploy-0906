@@ -1,0 +1,107 @@
+input
+
+/* 글쓰기 제목 박스 */
+.post_write_title_box {
+  border-top: solid 1px #eeeeee;
+  border-bottom: solid 1px #eeeeee;
+}
+.post_write_title_box input {
+  border: none;
+  font-size: 17px;
+  padding: 15px 25px;
+  width: 100%;
+  color: #797979;
+}
+.post_write_title {
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.post_write_title_box input:focus,
+option:focus {
+  outline: none;
+}
+
+/* 글쓰기 내용 박스 */
+.post_write_contents_box {
+  border-top: solid 1px #eeeeee;
+  border-bottom: solid 1px #eeeeee;
+}
+.post_write_contents_box input {
+  border: none;
+  font-size: 17px;
+  padding: 15px 25px;
+  width: 100%;
+  color: #797979;
+}
+.post_write_contents {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+/* 글쓰기 이미지 추가&등록 박스 */
+.post_write_submit_img_box {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.post_write_img_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+span.post_write_img_box {
+  padding: 0;
+}
+.post_write_img_box img {
+  width: 23px;
+  margin-right: 5px;
+}
+
+.post_update_left {
+  display: flex;
+  align-items: center;
+}
+
+.image_delete {
+  font-size: 14px;
+  text-align: center;
+  background-color: #5d2c1d;
+  border: none;
+  border-radius: 3px;
+  color: #fff6ed;
+  padding: 10px 12px;
+}
+
+.post_write_submit {
+  font-size: 14px;
+  background-color: #5d2c1d;
+  border: none;
+  border-radius: 5px;
+  color: #fff6ed;
+  padding: 8px 12px;
+  margin-left: 10px;
+}
+
+#id_photo {
+}
+#file-upload-button {
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 12px;
+  margin-right: 10px;
+}
+#id_user {
+  margin-top: 10px;
+}
+
+.post_update_submit_bigbox {
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+  margin-top: 30px;
+  justify-content: flex-end;
+}
