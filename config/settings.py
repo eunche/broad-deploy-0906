@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "enrz-t%t2gh_tm1#-^@^nuasv3_nt*58d8is=z6_teqa6212c="
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -154,6 +154,6 @@ MEDIA_URL = "/media/"
 
 # User 모델 커스터마이징
 AUTH_USER_MODEL = "users.User"
-MY_AWS_URL = 'broad.eba-rgevajz9.ap-northeast-2.elasticbeanstalk.com'
+MY_AWS_URL = "broad.eba-rgevajz9.ap-northeast-2.elasticbeanstalk.com"
 
 KAKAO_ID = "08a8e8a0fde8d36ad5c30df67d5d41f6"
