@@ -50,7 +50,7 @@ def post_detail(request, post_id):
                 )
             comment.save()
 
-            return redirect("/post/" + str(post_id))
+            return render("/post/" + str(post_id), {"aws_url": aws_url})
     else:
         form = CommentForm()
     return render(
