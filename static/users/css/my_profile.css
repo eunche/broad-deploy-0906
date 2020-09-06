@@ -112,10 +112,13 @@ a {
   margin-left: 10px;
 }
 
+.profile_bottom_blank {
+  height: 33px;
+}
+
 .profile__bottom {
-  position: absolute;
-  bottom: 100px;
   width: 100%;
+  margin-top: 30px;
 }
 .profile__logout {
   text-align: center;

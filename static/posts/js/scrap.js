@@ -12,12 +12,12 @@ const changeScrapDB = () => {
 };
 
 const clickScrap = () => {
-  if (scrapImg.src === `http://${awsURL}/static/posts/img/star.png`) {
-    scrapImg.src = `http://${awsURL}/static/posts/img/white_star.png`;
+  if (scrapImg.src === `/static/posts/img/star.png`) {
+    scrapImg.src = `/static/posts/img/white_star.png`;
     scrapText.classList.remove("text-color-gold");
     scrap.classList.remove("border-color-gold");
   } else {
-    scrapImg.src = `http://${awsURL}/static/posts/img/star.png`;
+    scrapImg.src = `/static/posts/img/star.png`;
     scrapText.classList.add("text-color-gold");
     scrap.classList.add("border-color-gold");
   }

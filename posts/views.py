@@ -146,4 +146,8 @@ def ajax_scrap(request):
 
 
 def scrap_post_list(request):
-    return render(request, "posts/scrap_post_list.html")
+    user = request.user
+    posts = post_models.Post.objevts.filter(user__scraped=user).order_by(
+        "-created_date"
+    )
+    return render(request, "posts/scrap_post_list.html", {"posts": posts})

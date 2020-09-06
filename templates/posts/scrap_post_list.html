@@ -29,10 +29,10 @@
 
 
 {% block content %}
-{% if user.scraped.all %}
+{% if posts %}
 <div class="post_list_bigbox">
     <div class="post_list_box">
-        {% for post in user.scraped.all %}
+        {% for post in posts %}
         <a href="{% url 'posts:detail' post.id %}">
             <div class="user_post_box">
                 <span class="user_post_information">
