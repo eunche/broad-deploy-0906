@@ -41,22 +41,15 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get("email")
-            auth_user = ""
-            try:
-                vali_user = User.objects.get(email=email)
-                auth_user = authenticate(
-                    request, username=vali_user.username, password=password
-                )
-            except User.DoesNotExist:
-                username = email
-                nickname = form.cleaned_data.get("nickname")
-                if nickname is None:
-                    nickname = email.split("@")[0]
-                password = form.cleaned_data.get("password")
-                user = User.objects.create_user(
-                    username=username, nickname=nickname, email=email, password=password
-                )
-                auth_user = authenticate(request, username=username, password=password)
+            username = email
+            nickname = form.cleaned_data.get("nickname")
+            if nickname is None:
+                nickname = email.split("@")[0]
+            password = form.cleaned_data.get("password")
+            user = User.objects.create_user(
+                username=username, nickname=nickname, email=email, password=password
+            )
+            auth_user = authenticate(request, username=username, password=password)
             if auth_user is not None:
                 auth_login(request, auth_user)
                 return redirect("map:main_map")
@@ -131,7 +124,7 @@ def kakao_callback(request):
         kakao_account = profile_json.get("kakao_account")
         properties = profile_json.get("properties")
         nickname = properties.get("nickname")
-        email = f"{nickname}@KakaoLogin.com"
+        email = kakao_account.get("email", None)
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
         username = "".join((random.choice(chars)) for x in range(8)) + "@kakaologin.com"
         try:

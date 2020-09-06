@@ -1,7 +1,3 @@
-const scrap = document.querySelector(".jsScrap");
-const scrapImg = document.querySelector(".jsScrapImg");
-const scrapText = document.querySelector(".jsScraptext");
-
 const changeScrapDB = () => {
   $.ajax({
     type: "POST",
@@ -12,6 +8,9 @@ const changeScrapDB = () => {
 };
 
 const clickScrap = () => {
+  const scrap = document.querySelector(".jsScrap");
+  const scrapImg = document.querySelector(".jsScrapImg");
+  const scrapText = document.querySelector(".jsScraptext");
   if (scrapImg.src === `/static/posts/img/star.png`) {
     scrapImg.src = `/static/posts/img/white_star.png`;
     scrapText.classList.remove("text-color-gold");
