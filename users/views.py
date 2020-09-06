@@ -121,12 +121,13 @@ def kakao_callback(request):
             headers={"Authorization": f"Bearer {access_token}"},
         )
         profile_json = profile_request.json()
+        print(profile_json)
         kakao_account = profile_json.get("kakao_account")
         properties = profile_json.get("properties")
         nickname = properties.get("nickname")
-        email = kakao_account.get("email", None)
+        email = f"{profile_json.get('id')}@kakaologin.com"
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
-        username = "".join((random.choice(chars)) for x in range(8)) + "@kakaologin.com"
+        username = email
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
