@@ -97,7 +97,7 @@
             </div>
 
             <!-- 댓글 박스 -->
-            {% for comment in comments %}
+            {% for comment in comments reversed %}
             <div class="post_detail_comment_box">
                 <div class="post_detail_comment_smallbox">
                     <span style="background-image:url({{comment.user.avatar.url}})"
@@ -115,7 +115,7 @@
                         <div class="post_detail_comment_contents">{{comment.body}}</div>
                     </span>
                 </div>
-                {% for recomment in comment.comments.all  %}
+                {% for recomment in comment.comments.all reversed  %}
                 <div class="post_detail_comment_box recomment">
                     <img class="recomment_arrow" src="{% static 'posts/img/arrow.png' %}" alt="arrow image">
                     <div class="post_detail_comment_smallbox">
