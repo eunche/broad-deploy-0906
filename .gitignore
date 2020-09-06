@@ -105,6 +105,7 @@ myvenv/
 .DS_Store
 *.sqlite3
 media/
+uploads/
 *.pyc
 *.db
 *.pid
