@@ -31,7 +31,6 @@ def post_my(request):
 
 def post_detail(request, post_id):
     aws_url = settings.MY_AWS_URL
-    print(aws_url)
     post_detail = get_object_or_404(post_models.Post, pk=post_id)
     comments = post_detail.comments.filter(target_comment__isnull=True)
     try:
