@@ -69,10 +69,6 @@
     </div>
     {% endblock bottom_icons %}
 
-    <script>
-        const viewHeight = window.innerHeight
-        document.querySelector("#map").setAttribute("style", `height:${viewHeight + 100}px;`)
-    </script>
     <script src="{% static 'core/js/enlarge.js' %}"></script>
     <script src="{% static 'core/js/hiddenClick.js' %}"></script>
     {% block script %}
