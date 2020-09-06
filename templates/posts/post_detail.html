@@ -100,7 +100,7 @@
             {% for comment in comments %}
             <div class="post_detail_comment_box">
                 <div class="post_detail_comment_smallbox">
-                    <span style="background-image:url({{post_detail.user.avatar.url}})"
+                    <span style="background-image:url({{comment.user.avatar.url}})"
                         class="post_detail_profile_img"></span>
                     <span class="post_detail_comment_information">
                         <div class="post_detail_comment_nickname_time">
@@ -119,7 +119,7 @@
                 <div class="post_detail_comment_box recomment">
                     <img class="recomment_arrow" src="{% static 'posts/img/arrow.png' %}" alt="arrow image">
                     <div class="post_detail_comment_smallbox">
-                        <span style="background-image:url({{post_detail.user.avatar.url}})"
+                        <span style="background-image:url({{recomment.user.avatar.url}})"
                             class="post_detail_profile_img"></span>
                         <span class="post_detail_comment_information">
                             <div class="post_detail_comment_nickname_time">
