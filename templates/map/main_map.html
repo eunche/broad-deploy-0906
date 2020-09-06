@@ -116,6 +116,10 @@
 </script>
 <script>
     const viewHeight = window.innerHeight
+    document.querySelector("#map").setAttribute(
+        "style",
+        `height:${viewHeight}px; max-height:${viewHeight}px;`
+    );
     document
         .querySelector("body")
         .setAttribute(
