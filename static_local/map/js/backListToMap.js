@@ -8,4 +8,5 @@ const backListToMap = () => {
       "style",
       `height:${viewHeight}px; max-height:${viewHeight}px;`
     );
+  document.documentElement.scrollTop = 0;
 };
