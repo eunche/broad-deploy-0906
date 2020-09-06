@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "enrz-t%t2gh_tm1#-^@^nuasv3_nt*58d8is=z6_teqa6212c="
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -132,7 +132,7 @@ elif DEBUG is False:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "HOST": "broad-db.ciyzxxyksnt2.ap-northeast-2.rds.amazonaws.com",
+            "HOST": "broad.ciyzxxyksnt2.ap-northeast-2.rds.amazonaws.com",
             "PORT": "5432",
             "NAME": "broad",
             "USER": "postgres",
