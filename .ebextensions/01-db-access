@@ -1,5 +1,0 @@
-commands:
-  01go:
-     command: "sudo chmod 775 /var/www/mysite"
-  02gogo:
-     command: "sudo chmod 664 /var/www/mysite/sqlite.db"
