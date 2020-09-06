@@ -194,6 +194,7 @@ const ajaxCallDetailData2 = (pk) => {
 };
 
 const goPinToBakeryDetail = (pk) => {
+  body.classList.remove("set_fixed");
   document.querySelector("body").setAttribute("style", ``);
   overlay.setMap(null);
   body.classList.add("height_auto", "overflow_none");

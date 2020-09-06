@@ -116,7 +116,12 @@
 </script>
 <script>
     const viewHeight = window.innerHeight
-
+    document
+        .querySelector("body")
+        .setAttribute(
+            "style",
+            `height:${viewHeight}px; max-height:${viewHeight}px;`
+        );
     const getRegionDataUrl = "{% url 'map:get_region_api' %}";
     const closeUrl = "{% static 'map/img/close.png' %}";
     const getBakeryListDataUrl = "{% url 'map:get_bakery_list_api' %}";
