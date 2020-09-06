@@ -72,10 +72,6 @@
     <script>
         const viewHeight = window.innerHeight
         document.querySelector("#map").setAttribute("style", `height:${viewHeight}px;`)
-        window.addEventListener('resize', () => {
-            const viewHeight = window.innerHeight
-            document.querySelector("#map").setAttribute("style", `height:${viewHeight}px;`)
-        })
     </script>
     <script src="{% static 'core/js/enlarge.js' %}"></script>
     <script src="{% static 'core/js/hiddenClick.js' %}"></script>
