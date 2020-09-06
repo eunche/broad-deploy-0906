@@ -193,6 +193,7 @@ const ajaxCallDetailData = (pk) => {
 };
 
 const goToBakeryDetail = (pk) => {
+  document.querySelector("body").setAttribute("style", ``);
   overlay.setMap(null);
   newContent.classList.replace("set_block", "set_none");
   ajaxCallDetailData(pk);

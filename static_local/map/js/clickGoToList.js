@@ -89,6 +89,7 @@ const ajaxCallData = (currentRegion) => {
 };
 
 const clickGoToList = () => {
+  document.querySelector("body").setAttribute("style", ``);
   body.classList.add("height_auto", "overflow_none");
   content.classList.add("set_none");
   currentRegion = regionSelect.value;
