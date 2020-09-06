@@ -215,5 +215,6 @@ else:
 # User 모델 커스터마이징
 AUTH_USER_MODEL = "users.User"
 MY_AWS_URL = "broad.eba-rgevajz9.ap-northeast-2.elasticbeanstalk.com"
+# MY_AWS_URL = "127.0.0.1:8000"
 
 KAKAO_ID = "08a8e8a0fde8d36ad5c30df67d5d41f6"
