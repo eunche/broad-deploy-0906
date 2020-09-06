@@ -11,7 +11,7 @@ const clickScrap = () => {
   const scrap = document.querySelector(".jsScrap");
   const scrapImg = document.querySelector(".jsScrapImg");
   const scrapText = document.querySelector(".jsScraptext");
-  if (scrapImg.src === `/static/posts/img/star.png`) {
+  if (scrapImg.src === `http://${awsURL}/static/posts/img/star.png`) {
     scrapImg.src = `/static/posts/img/white_star.png`;
     scrapText.classList.remove("text-color-gold");
     scrap.classList.remove("border-color-gold");

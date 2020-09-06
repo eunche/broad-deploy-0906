@@ -66,7 +66,7 @@ const setBakeryImages2 = () => {
     imgBoxs.insertAdjacentHTML(
       "beforeend",
       `
-        <img class="bakery_bread_image" src="/media/${detailData2.photos[i].fields.photo}">
+        <img class="bakery_bread_image" src="https://broadbucket.s3.amazonaws.com/${detailData2.photos[i].fields.photo}">
       `
     );
   }
@@ -98,7 +98,7 @@ const setDetailHTML2 = () => {
     <div class="bakery_information_box">
         <div class="bakery_box">
             <!-- 가게 로고 -->
-            <img class="bakery_trademark_detail" src="/media/${
+            <img class="bakery_trademark_detail" src="https://broadbucket.s3.amazonaws.com/${
               detailData2.bakery.fields.logo
             }">
             <!-- 가게 이름, 정보, 평점 -->
