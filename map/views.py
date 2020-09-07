@@ -2,13 +2,15 @@ import json
 from django.shortcuts import render, get_object_or_404
 from django.core import serializers
 from django.http import HttpResponse
+from django.conf import settings
 from bakeries import models as bakery_models
 
 # Create your views here.
 
 
 def main_map_view(request):
-    return render(request, "map/main_map.html")
+    aws_url = settings.MY_AWS_URL
+    return render(request, "map/main_map.html", {"aws_url": aws_url})
 
 
 def get_region_api(request):
@@ -39,6 +41,7 @@ def get_bakery_list_api(request):
     region = request.GET.get("region")
     a_bakery_list = bakery_models.Bakery.objects.filter(city=region)
     bakery_list = sorted(a_bakery_list, key=lambda x: x.total_rating(), reverse=True)
+    bakery_list = bakery_list[:30]
     counts = {"review": [], "rating": []}
     for index, bakery in enumerate(bakery_list):
         counts["review"].append(bakery.review_count())

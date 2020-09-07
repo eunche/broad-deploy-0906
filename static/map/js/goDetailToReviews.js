@@ -91,7 +91,6 @@ const ajaxCallReviewsData = (pk, review_count) => {
 };
 
 const goDetailToReviews = (pk, review_count) => {
-  console.log(pk, "리뷰도착");
   detailContent.classList.replace("set_block", "set_none");
   detailContent.insertAdjacentHTML(
     "beforebegin",

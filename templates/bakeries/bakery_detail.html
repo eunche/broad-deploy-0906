@@ -23,7 +23,7 @@
 {% block header %}
 <div class="header__wrapper">
     <div class="header__leftbox">
-        <img onclick="history.go(-1);" class="left_arrow" src="{% static 'core/img/left_arrow.png' %}"
+        <img onclick="setArrowLink()" class="left_arrow" src="{% static 'core/img/left_arrow.png' %}"
             alt="left_arrow icon">
     </div>
     <div class="header__midbox">
@@ -130,6 +130,7 @@
     const mapLng = "{{bakery_detail.lng}}"
     const awsURL = "{{ aws_url }}"
 </script>
+<script src="{% static 'bakeries/js/setArrowLink.js' %}"></script>
 <script src="{% static 'bakeries/js/like.js' %}"></script>
 <script src="{% static 'bakeries/js/bakeryDetailMap.js' %}"></script>
 <script>
