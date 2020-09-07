@@ -170,6 +170,8 @@ let options = {
   level: 10, //지도의 레벨(확대, 축소 정도)
 };
 
+let currentRegionMapLevel;
+
 // 제일처음 시작되는 함수로, map_init에서 지역이 클릭되면 카카오맵이 호출됨
 const startMap = (event) => {
   body.classList.remove("set_fixed");
@@ -190,6 +192,7 @@ const startMap = (event) => {
   if (needSetLevelUpLocals.includes(local)) {
     map.setLevel(9);
   }
+  currentRegionMapLevel = map.getLevel();
   jsonAsync(regionSelect.value);
 };
 
@@ -232,7 +235,9 @@ function setCenter(lat, lng) {
 
 // select박스에서 지역이 변경될시 호출되는 함수
 const changeRegion = () => {
-  clusterer.removeMarkers(markers);
+  try {
+    clusterer.removeMarkers(markers);
+  } catch (error) {}
   markers = [];
   let regionSelectedValue = regionSelect.value;
   setCenter(
@@ -246,7 +251,10 @@ const changeRegion = () => {
   }
 
   changePolygon(regionSelectedValue);
-  overlay.setMap(null);
+  try {
+    overlay.setMap(null);
+  } catch (error) {}
+  map.setLevel(currentRegionMapLevel);
 };
 
 // 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다
@@ -339,6 +347,7 @@ const clickRegionBack = () => {
   }
   goToList.classList.add("set_none"); // 빵집리스트로이동하기 제거
   mapInit.classList.remove("set_none"); //첫 지도이미지 display:none 추가
+  regionSelect.value = regionSelect.firstElementChild.innerText;
   regionSelectBox.classList.replace("set_flex", "set_none"); //지역선택박스 none -> block으로 변경
   regionSelectBox.classList.remove("set_z-index_6"); //지역선택박스 Kakao map 위로 오게 설정
   container.remove(); // map셋팅 삭제를 위해 div map element 제거
@@ -353,7 +362,8 @@ const clickRegionBack = () => {
   container = document.getElementById("map"); //새로생긴 div map의 DOM
   polygonPath = [];
   polygon.setMap(null);
-  clusterer.removeMarkers(markers);
+  try {
+    clusterer.removeMarkers(markers);
+  } catch (error) {}
   markers = [];
-  regionSelect.value = regionSelect.firstElementChild.innerText;
 };

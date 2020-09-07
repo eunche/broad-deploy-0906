@@ -4,11 +4,4 @@ const backListToMap = () => {
   content.classList.remove("set_none");
   header.innerHTML = beforeHeader;
   document.querySelector("body").classList.remove("overflow_none");
-  document
-    .querySelector("body")
-    .setAttribute(
-      "style",
-      `height:${viewHeight}px; max-height:${viewHeight}px;`
-    );
-  document.documentElement.scrollTop = 0;
 };

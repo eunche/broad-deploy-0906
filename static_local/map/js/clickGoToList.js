@@ -90,13 +90,13 @@ const ajaxCallData = (currentRegion) => {
 
 const clickGoToList = () => {
   document.querySelector("body").setAttribute("style", ``);
-  body.classList.add("height_auto", "overflow_none");
+  body.classList.add("overflow_none");
   content.classList.add("set_none");
   currentRegion = regionSelect.value;
   beforeHeader = header.innerHTML;
   header.innerHTML = headerHTML(currentRegion);
   content.insertAdjacentHTML(
-    "beforebegin",
+    "afterend",
     `
     <div class="content newContent set_base_content_padding">
       <div class="list jsList">

@@ -177,7 +177,7 @@ const ajaxCallDetailData = (pk) => {
     success: (response) => {
       detailData = response;
       reviewBakeryName = detailData.bakery.fields.name;
-      newContent.insertAdjacentHTML("beforebegin", setDetailHTML());
+      newContent.insertAdjacentHTML("afterend", setDetailHTML());
       listHeader = document.querySelector("header").innerHTML;
       detailContent = document.querySelector(".detailContent");
       setDetailHeader();
