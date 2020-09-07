@@ -24,7 +24,7 @@ SECRET_KEY = "enrz-t%t2gh_tm1#-^@^nuasv3_nt*58d8is=z6_teqa6212c="
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -122,14 +122,14 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-if DEBUG is True:
+if DEBUG is False:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
     }
-elif DEBUG is False:
+elif DEBUG is True:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -192,7 +192,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 """
 Media 관련 설정
 """
-if DEBUG is True:
+if DEBUG is False:
     # 사용자에 의해 업로드되는 미디어 파일을 저장할 경로
     MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
     # 웹 페이지에서 사용할 미디어 파일의 최상위 URL 경로
