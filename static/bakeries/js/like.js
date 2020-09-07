@@ -8,7 +8,6 @@ const changeLikeDB = () => {
 };
 
 const clickLike = () => {
-  console.log(like.src);
   let like = document.querySelector(".jsLike");
   if (like.src === `http://${awsURL}/static/bakeries/img/heart.png`) {
     like.src = `http://${awsURL}/static/bakeries/img/white_heart.png`;
