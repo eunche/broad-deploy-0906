@@ -157,6 +157,15 @@ footer {
   position: fixed;
 }
 
+.scroll_available {
+  z-index: 10000;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+}
+
 /* 반응형 CSS */
 @media (min-width: 400px) {
   .map_init {
