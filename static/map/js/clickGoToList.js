@@ -89,6 +89,7 @@ const ajaxCallData = (currentRegion) => {
 };
 
 const clickGoToList = () => {
+  contentHTML = content.innerHTML;
   document.querySelector("body").setAttribute("style", ``);
   body.classList.add("overflow_none");
   content.classList.add("set_none");
@@ -104,6 +105,8 @@ const clickGoToList = () => {
     </div>
     `
   );
+  content.setAttribute("style", "opacity:0; display:none");
+  content.remove();
   newContent = document.querySelector(".newContent");
   newContent.classList.add("set_block");
   ListElement = document.querySelector(".jsList");

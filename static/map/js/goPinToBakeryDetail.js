@@ -179,6 +179,8 @@ const ajaxCallDetailData2 = (pk) => {
       detailData2 = response;
       reviewBakeryName = detailData2.bakery.fields.name;
       content.insertAdjacentHTML("afterend", setDetailHTML2());
+      content.setAttribute("style", "opacity:0; display:none");
+      content.remove();
       mapHeader = document.querySelector("header").innerHTML;
       detailContent = document.querySelector(".detailContent");
       setDetailHeader2();
@@ -198,6 +200,5 @@ const goPinToBakeryDetail = (pk) => {
   document.querySelector("body").setAttribute("style", ``);
   overlay.setMap(null);
   body.classList.add("overflow_none");
-  content.classList.add("set_none");
   ajaxCallDetailData2(pk);
 };
