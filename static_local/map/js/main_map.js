@@ -1,9 +1,10 @@
-let container = document.getElementById("map"); //지도를 담을 영역의 DOM
-const mapInit = document.querySelector(".jsMapInit"); //첫 지도이미지 DOM
-const regionSelectBox = document.querySelector(".jsRegionSelectBox"); //지역선택박스 DOM
-const regionSelect = document.querySelector(".jsRegionSelect"); //지역선택 Select태그 DOM
-const content = document.querySelector(".content");
-const goToList = document.querySelector(".go_to_list");
+let container; //지도를 담을 영역의 DOM
+let mapInit; //첫 지도이미지 DOM
+let regionSelectBox; //지역선택박스 DOM
+let regionSelect; //지역선택 Select태그 DOM
+let content;
+let contentHTML;
+let goToList;
 let detailHeader;
 let reviewBakeryName;
 let bakeryPK;
@@ -25,6 +26,7 @@ let myphoto = "";
 let positions = {};
 let local;
 let clusterer;
+let isReturn;
 
 const addRegionSelect = (local) => {
   for (const city of regionData[local]) {
@@ -173,21 +175,27 @@ let options = {
 let currentRegionMapLevel;
 
 // 제일처음 시작되는 함수로, map_init에서 지역이 클릭되면 카카오맵이 호출됨
-const startMap = (event) => {
+const startMap = (event = "") => {
+  container = document.getElementById("map");
+  mapInit = document.querySelector(".jsMapInit");
+  regionSelectBox = document.querySelector(".jsRegionSelectBox");
+  regionSelect = document.querySelector(".jsRegionSelect");
+  content = document.querySelector(".content");
+  contentHTML = content.innerHTML;
+  goToList = document.querySelector(".go_to_list");
   body.classList.remove("set_fixed");
   content.classList.add("set_base_content_padding");
   mapInit.classList.add("set_none"); //첫 지도이미지 display:none 추가
   regionSelectBox.classList.replace("set_none", "set_flex"); //지역선택박스 none -> block으로 변경
   regionSelectBox.classList.add("set_z-index_6"); //지역선택박스 Kakao map 위로 오게 설정
   goToList.classList.remove("set_none");
-  local = event.target.alt;
-  addRegionSelect(event.target.alt); // select태그들이 추가되도록
+  if (isReturn != true) {
+    local = event.target.alt;
+  }
+  addRegionSelect(local); // select태그들이 추가되도록
   map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
   map.setCenter(
-    new kakao.maps.LatLng(
-      regionData[event.target.alt][0][1],
-      regionData[event.target.alt][0][2]
-    )
+    new kakao.maps.LatLng(regionData[local][0][1], regionData[local][0][2])
   );
   if (needSetLevelUpLocals.includes(local)) {
     map.setLevel(9);
@@ -339,6 +347,7 @@ const setMouseInOut = () => {
 
 // 지역선택으로 돌아가는 뒤로가기버튼 눌렀을때 실행됨
 const clickRegionBack = () => {
+  isReturn = false;
   body.classList.add("set_fixed");
   delete map;
   delete polygon;
@@ -346,7 +355,7 @@ const clickRegionBack = () => {
     markers[i].setMap(null);
   }
   goToList.classList.add("set_none"); // 빵집리스트로이동하기 제거
-  mapInit.classList.remove("set_none"); //첫 지도이미지 display:none 추가
+  mapInit.classList.remove("set_none"); //첫 지도이미지 display:none 제거
   regionSelect.value = regionSelect.firstElementChild.innerText;
   regionSelectBox.classList.replace("set_flex", "set_none"); //지역선택박스 none -> block으로 변경
   regionSelectBox.classList.remove("set_z-index_6"); //지역선택박스 Kakao map 위로 오게 설정

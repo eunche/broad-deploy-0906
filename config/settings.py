@@ -27,7 +27,7 @@ SECRET_KEY = "enrz-t%t2gh_tm1#-^@^nuasv3_nt*58d8is=z6_teqa6212c="
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "58371bd53ab1.ngrok.io",
+    "50ea84f34608.ngrok.io",
     "127.0.0.1",
     "broad.eba-rgevajz9.ap-northeast-2.elasticbeanstalk.com",
 ]
