@@ -34,6 +34,20 @@
 {% block title %}
 프로필 수정
 {% endblock title %}
+
+{% block header %}
+<div class="header__wrapper">
+    <div class="header__leftbox">
+        <a href="{% url 'users:profile_update' %}"><img class="left_arrow" src="{% static 'core/img/left_arrow.png' %}"
+                alt="left_arrow icon"></a>
+    </div>
+    <div class="header__midbox">
+        <span class="header__title">프로필 이미지 변경</span>
+    </div>
+    <div class="header__rightbox">
+    </div>
+</div>
+{% endblock header %}
 {% block content %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -41,3 +55,6 @@
     <input class="profile_image_submit" type="submit" style="border-radius: 3px;" value="등록">
 </form>
 {% endblock content %}
+
+{% block bottom_icons %}
+{% endblock bottom_icons %}

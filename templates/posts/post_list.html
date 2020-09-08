@@ -76,5 +76,11 @@
         </a>
         {% endfor %}
     </div>
+</div>
+{% endblock content %}
 
-    {% endblock content %}
+{% block script %}
+<script>
+    document.querySelector(".bottom_icons").children.item(1).classList.add("set_bottom_black")
+</script>
+{% endblock script %}

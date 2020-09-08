@@ -69,6 +69,7 @@
 {% block script %}
 <script>
     const awsURL = "{{ aws_url }}"
+    document.querySelector(".bottom_icons").children.item(2).classList.add("set_bottom_black")
 </script>
 <script src="{% static 'bakeries/js/sort.js' %}"></script>
 {% endblock script %}

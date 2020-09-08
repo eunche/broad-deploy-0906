@@ -68,6 +68,7 @@
 <script>
     const csrf = "{{ csrf_token }}";
     const ajaxLikeUrl = "{% url 'bakeries:ajax_like' %}";
+    document.querySelector(".bottom_icons").children.item(3).classList.add("set_bottom_black")
 </script>
 <script src="{% static 'bakeries/js/like_list.js' %}"></script>
 {% endblock script %}

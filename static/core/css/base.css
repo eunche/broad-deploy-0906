@@ -133,7 +133,7 @@ header {
 }
 
 .bottom_icons > a {
-  border-top: solid 2px #ececec;
+  border-top: solid 2px #fafafa;
 }
 
 .buttom_icons__icon_wrap {
@@ -211,4 +211,9 @@ header {
   position: relative;
   bottom: 20px;
   color: #5d2c1d;
+}
+
+/* JS 관련 */
+.set_bottom_black {
+  border-top: solid 2px black !important;
 }

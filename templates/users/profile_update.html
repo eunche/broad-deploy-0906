@@ -75,3 +75,9 @@
 
 {% block bottom_icons %}
 {% endblock bottom_icons %}
+
+{% block script %}
+<script>
+    document.querySelector(".bottom_icons").children.item(4).classList.add("set_bottom_black")
+</script>
+{% endblock script %}
