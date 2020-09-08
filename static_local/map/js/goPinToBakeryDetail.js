@@ -179,7 +179,7 @@ const ajaxCallDetailData2 = (pk) => {
       detailData2 = response;
       reviewBakeryName = detailData2.bakery.fields.name;
       content.insertAdjacentHTML("afterend", setDetailHTML2());
-      content.setAttribute("style", "opacity:0; display:none");
+      content.innerHTML = "";
       content.remove();
       mapHeader = document.querySelector("header").innerHTML;
       detailContent = document.querySelector(".detailContent");

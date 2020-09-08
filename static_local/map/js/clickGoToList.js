@@ -105,7 +105,7 @@ const clickGoToList = () => {
     </div>
     `
   );
-  content.setAttribute("style", "opacity:0; display:none");
+  content.innerHTML = "";
   content.remove();
   newContent = document.querySelector(".newContent");
   newContent.classList.add("set_block");
