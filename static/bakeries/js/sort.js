@@ -98,7 +98,7 @@ const clickCategory = async (event) => {
   }
   try {
     const get = await $.getJSON(
-      `http://${awsURL}/bakery/${eng_bread}-data/`,
+      `https://${awsURL}/bakery/${eng_bread}-data/`,
       (data) => {
         pickedData = data;
       }
@@ -109,6 +109,6 @@ const clickCategory = async (event) => {
   }
 };
 
-$.getJSON(`http://${awsURL}/bakery/tart-data/`, (data) => {
+$.getJSON(`https://${awsURL}/bakery/tart-data/`, (data) => {
   addInfo(data);
 });
