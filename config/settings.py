@@ -24,12 +24,9 @@ SECRET_KEY = "enrz-t%t2gh_tm1#-^@^nuasv3_nt*58d8is=z6_teqa6212c="
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "broad.eba-rgevajz9.ap-northeast-2.elasticbeanstalk.com",
-]
+ALLOWED_HOSTS = ["*"]
 
 
 def is_ec2_linux():
@@ -89,6 +86,7 @@ THIRD_PARTY_APPS = []
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

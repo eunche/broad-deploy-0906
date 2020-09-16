@@ -88,6 +88,7 @@ celerybeat-schedule
 venv/
 ENV/
 myvenv/
+heroku_deploy_venv/
 .vscode
 # Spyder project settings
 .spyderproject
@@ -116,7 +117,3 @@ uploads/
 # **/migrations/**
 # !**/migrations
 # !**/migrations/__init__.py
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
