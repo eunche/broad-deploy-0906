@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django-heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -217,3 +218,5 @@ MY_AWS_URL = "broad.eba-rgevajz9.ap-northeast-2.elasticbeanstalk.com"
 # MY_AWS_URL = "127.0.0.1:8000"
 
 KAKAO_ID = "08a8e8a0fde8d36ad5c30df67d5d41f6"
+
+django_heroku.settings(locals())
