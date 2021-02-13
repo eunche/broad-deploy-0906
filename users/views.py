@@ -93,7 +93,7 @@ def profile_update(request):
 # 카카오 소셜로그인
 def kakao_login(request):
     client_id = settings.KAKAO_ID
-    redirect_uri = f"http://{settings.MY_AWS_URL}/user/login/kakao/callback"
+    redirect_uri = f"https://{settings.MY_AWS_URL}/user/login/kakao/callback"
     return redirect(
         f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
     )
@@ -107,7 +107,7 @@ def kakao_callback(request):
     try:
         code = request.GET.get("code")
         client_id = settings.KAKAO_ID
-        redirect_uri = f"http://{settings.MY_AWS_URL}/user/login/kakao/callback"
+        redirect_uri = f"https://{settings.MY_AWS_URL}/user/login/kakao/callback"
         token_request = requests.get(
             f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}"
         )
